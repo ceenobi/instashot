@@ -53,7 +53,6 @@ export default function Notification({
     setVisibleNotifications([]);
     setReadIds([]);
   };
-  console.log("ll", notifications);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 

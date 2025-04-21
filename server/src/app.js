@@ -6,6 +6,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import passport from "passport";
+import "./lib/passport.js"
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 
 //routes
