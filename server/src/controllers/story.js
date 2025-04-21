@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 import tryCatchFn from "../lib/tryCatchFn.js";
 import { AppError } from "../middlewares/errorHandler.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../db/cloudinary.js";
-import pusher from "../db/pusher.js";
 
 const prisma = new PrismaClient();
 
@@ -192,21 +191,21 @@ export const getStory = tryCatchFn(async (req, res, next) => {
           });
 
           // If this is the story owner's story, trigger notification
-          if (storyOwner && story.userId !== req.user.id) {
-            pusher.trigger("story-channel", "story-viewed", {
-              taskId: story.id,
-              message: `${req.user.username} viewed your story`,
-              storyOwner: story.userId,
-            });
-            await prisma.notification.create({
-              data: {
-                message: `${req.user.username} viewed your story`,
-                type: "STORY_VIEW",
-                notificationId: `story-view-${story.id}-${req.user.id}`,
-                userId: story.userId, // Send to story owner
-              },
-            });
-          }
+          // if (storyOwner && story.userId !== req.user.id) {
+          //   pusher.trigger("story-channel", "story-viewed", {
+          //     taskId: story.id,
+          //     message: `${req.user.username} viewed your story`,
+          //     storyOwner: story.userId,
+          //   });
+          //   await prisma.notification.create({
+          //     data: {
+          //       message: `${req.user.username} viewed your story`,
+          //       type: "STORY_VIEW",
+          //       notificationId: `story-view-${story.id}-${req.user.id}`,
+          //       userId: story.userId, // Send to story owner
+          //     },
+          //   });
+          // }
           return updatedStory;
         }
         return story;

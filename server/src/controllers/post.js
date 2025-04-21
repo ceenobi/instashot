@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 import { AppError } from "../middlewares/errorHandler.js";
 import { uploadToCloudinary, deleteFromCloudinary } from "../db/cloudinary.js";
 import tryCatchFn from "../lib/tryCatchFn.js";
-import pusher from "../db/pusher.js";
 import { redisClient } from "../db/redis.js";
 
 const prisma = new PrismaClient();
