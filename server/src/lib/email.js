@@ -21,7 +21,7 @@ export const sendMail = async ({
     const mailGenerator = new Mailgen({
       theme: "default",
       product: {
-        name: "Instapixs",
+        name: "Instashot",
         link: process.env.CLIENT_URL || "https://instapics.vercel.app",
       },
     });
@@ -31,7 +31,7 @@ export const sendMail = async ({
         intro,
         action: {
           instructions:
-            instructions || "To get started with Instapixs, please click here:",
+            instructions || "To get started with Instashot, please click here:",
           button: {
             text: btnText || "Visit",
             link: link || process.env.CLIENT_URL,
@@ -59,7 +59,7 @@ export const sendMail = async ({
       },
     });
     await transporter.verify().catch((error) => {
-      throw createHttpError(
+      throw new AppError(
         500,
         `Failed to connect to email service: ${error.message}`
       );
