@@ -227,7 +227,7 @@ export function Component() {
                   Suggested for you
                 </h1>
                 {users?.map((connect, index) => (
-                  <div className="my-4 flex justify-between items-center" key={index}>
+                  <div className="my-4 flex justify-between items-center" key={connect.id}>
                     <Link
                       to={`/profile/${connect.username}`}
                       className="flex items-center gap-4"
