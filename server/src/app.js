@@ -22,7 +22,7 @@ const app = express();
 const httpServer = createServer(app);
 
 const corsOptions = {
-  origin: ["http://localhost:4400"],
+  origin: ["http://localhost:4400", "https://instashot.vercel.app"],
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
