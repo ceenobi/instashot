@@ -6,11 +6,8 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import passport from "passport";
-// import session from "express-session";
-// import { RedisStore } from "connect-redis";
-import "./lib/passport.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
-// import { redisClient } from "./db/redis.js";
+
 //routes
 import authRoutes from "./routes/user.js";
 import googleRoutes from "./routes/google.js";
@@ -22,7 +19,7 @@ const app = express();
 const httpServer = createServer(app);
 
 const corsOptions = {
-  origin: ["http://localhost:4400", "https://instashot.vercel.app"],
+  origin: true,
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
