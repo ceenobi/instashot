@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { connectToDb } from "./db/connection.js";
-import { httpServer } from "./app.js";
+import { connectToDb } from "./src/db/connection.js";
+import { httpServer } from "./src/app.js";
 
 const PORT = process.env.PORT || 3000;
 const prisma = new PrismaClient();
