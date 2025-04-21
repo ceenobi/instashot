@@ -6,6 +6,13 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -13,6 +20,7 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": false,
+    "emitDeclarationOnly": true,
     "composite": true,
 
     /* Linting */
