@@ -80,6 +80,7 @@ export const explorePosts = async (page: string | number) => {
 };
 
 export const getNotifications = async () => {
+  if (!accessToken) return;
   return await axiosInstance.get(`/posts/notifications`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
