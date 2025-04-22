@@ -6,7 +6,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import passport from "passport";
-import "./lib/passport.js"
+import "./lib/passport.js";
 import { errorHandler, notFoundHandler } from "./middlewares/errorHandler.js";
 
 //routes
@@ -20,7 +20,7 @@ const app = express();
 const httpServer = createServer(app);
 
 const corsOptions = {
-  origin: true,
+  origin: ["http://localhost:4400", "https://instashot.vercel.app"],
   optionsSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true,
@@ -46,24 +46,24 @@ app.use(passport.initialize());
 app.use(morgan("dev"));
 app.use(compression());
 app.use(cookieParser());
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         defaultSrc: ["'self'"],
-//         scriptSrc: ["'self'", "trusted-scripts.com"],
-//         objectSrc: ["'none'"],
-//         upgradeInsecureRequests: [],
-//       },
-//     },
-//     frameguard: {
-//       action: "deny",
-//     },
-//     referrerPolicy: {
-//       policy: "no-referrer",
-//     },
-//   })
-// );
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "trusted-scripts.com"],
+        objectSrc: ["'none'"],
+        upgradeInsecureRequests: [],
+      },
+    },
+    frameguard: {
+      action: "deny",
+    },
+    referrerPolicy: {
+      policy: "no-referrer",
+    },
+  })
+);
 app.use(json({ limit: "25mb" }));
 app.use(express.urlencoded({ limit: "25mb", extended: true }));
 
