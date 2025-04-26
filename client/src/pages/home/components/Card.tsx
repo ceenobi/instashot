@@ -58,6 +58,11 @@ function Card({
     if (!fetcher.data) return;
     if (fetcher.data.success) {
       //toast.success(fetcher.data.message, { id: "likeSave" });
+      setLikeCount(fetcher.data.post?.like?.length || 0);
+      setIsPostLiked((prev: Record<string, boolean>) => {
+        const liked = !!prev[user.id];
+        return { ...prev, [user.id]: !liked };
+      });
       if (fetcher.data.comment) {
         toast.success(fetcher.data.message, {
           id: "comment-success",
@@ -72,17 +77,19 @@ function Card({
     }
   }, [user.id, fetcher.data, reset]);
 
+  console.log("gg", fetcher);
+
   const handleLikeOrSave = useCallback(
     (type: string) => {
       switch (type) {
         case "like":
-          setIsPostLiked((prev: Record<string, boolean>) => {
-            const liked = !!prev[user.id];
-            setLikeCount((prevCount) =>
-              liked ? Math.max(prevCount - 1, 0) : prevCount + 1
-            );
-            return { ...prev, [user.id]: !liked };
-          });
+          // setIsPostLiked((prev: Record<string, boolean>) => {
+          //   const liked = !!prev[user.id];
+          //   setLikeCount((prevCount) =>
+          //     liked ? Math.max(prevCount - 1, 0) : prevCount + 1
+          //   );
+          //   return { ...prev, [user.id]: !liked };
+          // });
           fetcher.submit(
             { id: post.id, type },
             { method: "patch", action: "/?index" }
@@ -99,7 +106,7 @@ function Card({
           break;
       }
     },
-    [fetcher, post.id, user.id]
+    [fetcher, post.id]
   );
 
   const onSubmit = (data: FieldValues) => {
@@ -180,15 +187,6 @@ function Card({
                           }}
                           ref={videoRef}
                         />
-                        {/* <video
-                          src={item}
-                          className={`w-full h-auto lg:h-[550px] object-cover aspect-square shrink-0 rounded-md`}
-                          ref={videoRef}
-                          controls={false}
-                          playsInline
-                          loop
-                          autoPlay
-                        /> */}
                         <button
                           onClick={handlePlayPause}
                           className="absolute top-1/2 left-[45%] btn btn-circle btn-ghost hover:bg-transparent opacity-75 hover:opacity-100 text-white border-0"
