@@ -77,8 +77,6 @@ function Card({
     }
   }, [user.id, fetcher.data, reset]);
 
-  console.log("gg", fetcher);
-
   const handleLikeOrSave = useCallback(
     (type: string) => {
       switch (type) {
