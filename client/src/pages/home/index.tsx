@@ -83,7 +83,10 @@ export function Component() {
     const message = data.message || data.error;
     if (data?.success) {
       toast.success(message, { id: "follow-user" });
-    }
+    } 
+    // else if (!data?.success) {
+    //   toast.error(message, { id: "follow-userError" });
+    // }
   };
 
   useEffect(() => {

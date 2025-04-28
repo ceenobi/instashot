@@ -59,7 +59,7 @@ export default function Notification({
   return (
     <>
       <div
-        className={`tooltip tooltip-right flex gap-3 items-center p-3 cursor-pointer hover:font-bold hover:text-zinc-800 dark:hover:text-zinc-200 hover:transition duration-150 ease-out rounded-lg z-50 relative ${
+        className={`tooltip tooltip-right flex gap-3 items-center md:p-3 cursor-pointer hover:font-bold hover:text-zinc-800 dark:hover:text-zinc-200 hover:transition duration-150 ease-out rounded-lg z-50 relative ${
           isOpenSidebar
             ? "md:hover:bg-zinc-100 md:dark:hover:bg-zinc-500"
             : "border border-amber-50 rounded-lg"

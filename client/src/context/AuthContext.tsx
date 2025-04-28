@@ -56,6 +56,7 @@ export default function AuthProvider({
           })
           .catch((error) => {
             console.error(error);
+            handleLogout();
           });
       } else {
         const refreshTimer = setTimeout(async () => {
@@ -65,6 +66,7 @@ export default function AuthProvider({
             window.location.reload();
           } catch (error) {
             console.error(error);
+            handleLogout();
           }
         }, timeUntilRefresh);
 

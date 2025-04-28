@@ -18,8 +18,7 @@ export default function Nav() {
             <img src={Instashots} alt="logo" className="w-[40px] h-[40px]" />
             <span>Instashots</span>
           </NavLink>
-          <div className="flex gap-5 items-center px-4">
-            {/* <i className="ri-notification-line text-2xl"></i> */}
+          <div className="flex gap-4 items-center px-4">
             <Notification
               isOpenSidebar={isOpenSidebar}
               isOpen={isOpenNotification}
