@@ -198,7 +198,7 @@ export default function CreatePost({
                     </div>
                   ))}
                 </div>
-                <label className="my-4 label cursor-pointer">
+                {/* <label className="my-4 label cursor-pointer">
                   <span className="label-text">Public post</span>
                   <input
                     type="checkbox"
@@ -206,7 +206,7 @@ export default function CreatePost({
                     {...register("isPublic")}
                     defaultChecked
                   />
-                </label>
+                </label> */}
                 <ActionButton
                   text="Post"
                   type="submit"

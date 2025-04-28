@@ -30,9 +30,7 @@ export const createPostSchema = z.object({
   caption: z.string().min(3, {
     message: "Caption must be at least 3 characters long",
   }),
-  description: z.string().min(3, {
-    message: "Description must be at least 3 characters long",
-  }),
+  description: z.string().optional(),
   media: z.array(z.string()),
   tags: z.array(z.string()).optional(),
   isPublic: z.boolean(),

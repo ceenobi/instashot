@@ -86,6 +86,10 @@ export function Component() {
     });
   };
 
+  const filteredMedia = post?.media.filter(
+    (item: string) => !item.endsWith(".mp4") && !item.endsWith(".webm")
+  );
+
   return (
     <>
       <MetaArgs title="Edit your post" description="Edit post" />
@@ -97,18 +101,12 @@ export function Component() {
         <div className="grid grid-cols-12 h-[700px]">
           <div className="col-span-12 md:col-span-6">
             <div className="flex flex-wrap w-full h-full">
-              {post?.media.map((item: string, index: number) => (
-                <div key={index}>
-                  {!item.endsWith(".mp4") && !item.endsWith(".webm") && (
-                    <img
-                      src={item}
-                      className={`w-full h-full object-cover aspect-square `}
-                      alt={`Post ${index + 1}`}
-                      loading="lazy"
-                    />
-                  )}
-                </div>
-              ))}
+              <img
+                src={filteredMedia[0]}
+                className={`w-full h-full object-cover aspect-square `}
+                alt={`Post ${1}`}
+                loading="lazy"
+              />
             </div>
           </div>
           <div className="mt-6 lg:mt-20 col-span-12 md:col-span-6 px-5 md:px-10 py-4">
