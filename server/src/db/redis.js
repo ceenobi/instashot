@@ -1,6 +1,5 @@
 import redis from "redis";
 
-// host: "redis-11385.c99.us-east-1-4.ec2.redns.redis-cloud.com",
 const redisClient = redis.createClient({
   username: "default",
   password: process.env.REDIS_PASSWORD,

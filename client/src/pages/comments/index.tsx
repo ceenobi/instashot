@@ -150,7 +150,7 @@ export function Component() {
     <>
       <MetaArgs
         title={`${post?.user?.username} - ${post?.caption}`}
-        description="View post, comment , like post"
+        description="View post, comment, like post"
       />
       <Modal
         isOpen={isOpen}

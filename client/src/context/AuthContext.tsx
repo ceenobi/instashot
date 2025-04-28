@@ -5,7 +5,6 @@ import { jwtDecode } from "jwt-decode";
 import { logoutUser, refreshToken } from "@/api/auth";
 import { toast } from "sonner";
 import { QueryClient } from "@tanstack/react-query";
-// import { getAuth } from "@/loaders";
 import { User } from "@/types";
 
 const queryClient = new QueryClient();
@@ -73,8 +72,9 @@ export default function AuthProvider({
       }
     } catch (error) {
       console.error("Error setting up token refresh:", error);
+      handleLogout();
     }
-  }, [accessToken, setAccessToken]);
+  }, [accessToken, setAccessToken, handleLogout]);
 
   useEffect(() => {
     const cleanup = setupTokenRefresh();
@@ -82,33 +82,6 @@ export default function AuthProvider({
       if (cleanup) cleanup();
     };
   }, [setupTokenRefresh]);
-  
-  // const checkAuth = useCallback(async () => {
-  //   try {
-  //     const res = await getAuth();
-  //     if (res?.status === 200) {
-  //       setUser(res!.data.user);
-  //     } else {
-  //       setupTokenRefresh();
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, [setUser, setupTokenRefresh]);
-
-  // useEffect(() => {
-  //   if (!accessToken) return;
-  //   checkAuth();
-  //   const cleanup = setupTokenRefresh();
-  //   return () => cleanup?.();
-  // }, [accessToken, setupTokenRefresh, checkAuth]);
-
-  // useEffect(() => {
-  //   if (user) return;
-  //   if (accessToken) {
-  //     checkAuth();
-  //   }
-  // }, [user, accessToken, checkAuth]);
 
   return (
     <AuthContext.Provider

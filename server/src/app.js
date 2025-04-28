@@ -42,7 +42,6 @@ app.use(cors(corsOptions));
 //   })
 // );
 app.use(passport.initialize());
-// app.use(passport.session());
 app.use(morgan("dev"));
 app.use(compression());
 app.use(cookieParser());

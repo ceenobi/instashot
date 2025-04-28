@@ -47,7 +47,7 @@ export function Component() {
             can see what you share, including your photos or hashtag, and your
             followers and following lists. Certain info on your profile, like
             your profile picture and username, is visible to everyone on
-            Instapics.
+            Instashots.
           </span>
         </div>
         <fetcher.Form

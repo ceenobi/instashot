@@ -74,16 +74,20 @@ export function Component() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetcher.data?.postsFeeds?.data?.posts, posts, page]);
 
-  useEffect(() => {
-    if (fetcher.data) {
-      if (fetcher.data.success) {
-        toast.success(fetcher.data.message, { id: "follow-user" });
-      } else {
-        toast.error(fetcher.data.message || fetcher.data.error, {
-          id: "follow-userError",
-        });
-      }
+  const handleFetchResponse = (data: {
+    message: string;
+    error: string;
+    success: boolean;
+  }) => {
+    if (!data) return;
+    const message = data.message || data.error;
+    if (data?.success) {
+      toast.success(message, { id: "follow-user" });
     }
+  };
+
+  useEffect(() => {
+    handleFetchResponse(fetcher.data);
   }, [fetcher.data]);
 
   return (
@@ -227,7 +231,10 @@ export function Component() {
                   Suggested for you
                 </h1>
                 {users?.map((connect, index) => (
-                  <div className="my-4 flex justify-between items-center" key={connect.id}>
+                  <div
+                    className="my-4 flex justify-between items-center"
+                    key={connect.id}
+                  >
                     <Link
                       to={`/profile/${connect.username}`}
                       className="flex items-center gap-4"
