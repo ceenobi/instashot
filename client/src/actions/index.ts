@@ -44,7 +44,9 @@ export async function loginAction({ request }: { request: Request }) {
     const res = await loginUser(data as LoginFormData);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -59,7 +61,9 @@ export async function registerAction({ request }: { request: Request }) {
     const res = await signUpUser(data as RegisterFormData);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -74,7 +78,9 @@ export async function forgotPasswordAction({ request }: { request: Request }) {
     const res = await forgotPassword(data as ForgotPasswordFormData);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -91,7 +97,9 @@ export async function resetPasswordAction({ request }: { request: Request }) {
     });
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -127,7 +135,9 @@ export async function createPostAction({ request }: { request: Request }) {
       return res.data;
     }
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -140,7 +150,9 @@ export const sendVerifyEmailAction = async () => {
     const res = await resendVerificationEmail();
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -153,7 +165,9 @@ export const verifyEmailAction = async (userId: string, token: string) => {
     const res = await verifyEmail(userId, token);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -183,7 +197,9 @@ export const likeSaveOrCommentAction = async ({
       return res.data;
     }
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -199,7 +215,9 @@ export async function createCommentAction({ request }: { request: Request }) {
     const res = await createComment(data.id as string, comment);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -219,7 +237,9 @@ export async function deletePostAction({ request }: { request: Request }) {
       return res.data;
     }
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -243,7 +263,9 @@ export async function updatePostAction({ request }: { request: Request }) {
     const res = await updatePost(data.id as string, data as unknown as Post);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -275,7 +297,9 @@ export async function userProfileAction({ request }: { request: Request }) {
       return res.data;
     }
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -290,7 +314,9 @@ export async function followUserAction({ request }: { request: Request }) {
     const res = await followUser(data.id as string);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -307,7 +333,9 @@ export async function deleteStoryAction({ request }: { request: Request }) {
       return res.data;
     }
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -322,7 +350,9 @@ export async function likeStoryAction({ request }: { request: Request }) {
     const res = await likeStory(data.id as string);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -337,7 +367,9 @@ export async function updatePasswordAction({ request }: { request: Request }) {
     const res = await updatePassword(data as UpdatePasswordFormData);
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
@@ -358,7 +390,9 @@ export async function updateUserPrivacyAction({
     );
     return res.data;
   } catch (error) {
-    console.error(error);
+    if (import.meta.env.VITE_APP_MODE === "development") {
+      console.error(error);
+    }
     if (error instanceof AxiosError) {
       return error.response?.data;
     }
