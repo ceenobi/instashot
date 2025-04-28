@@ -3,10 +3,13 @@ import Instashots from "@/assets/logo_instagram.png";
 import { useAuth } from "@/context";
 import Notification from "./Notification";
 import { useState } from "react";
+import preloadImage from "@/libs/preloadImage";
+
 
 export default function Nav() {
   const [isOpenNotification, setIsOpenNotification] = useState(false);
   const { handleLogout, isOpenSidebar } = useAuth();
+  preloadImage(Instashots);
   return (
     <>
       <div className="md:hidden w-full fixed top-0 z-40 py-2 px-4 shadow bg-white dark:bg-base-200">

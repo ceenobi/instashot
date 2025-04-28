@@ -1,6 +1,8 @@
 import Instagram from "@/assets/logo_instagram.png";
+import preloadImage from "@/libs/preloadImage";
 
 export function LazySpinner() {
+  preloadImage(Instagram);
   return (
     <div className="flex flex-col gap-2 justify-center items-center h-screen relative">
       <img src={Instagram} alt="logo" className="w-[75px] h-[75px]" />

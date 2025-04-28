@@ -18,7 +18,9 @@ interface RouteErrorResponse extends ErrorResponse {
 
 export function ErrorBoundary() {
   const error = useRouteError() as RouteErrorResponse;
-  console.error(error);
+  if (import.meta.env.VITE_APP_MODE === "development") {
+    console.error(error);
+  }
   const errorMessage: string =
     error?.data ||
     error?.error ||

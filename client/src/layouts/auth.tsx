@@ -2,6 +2,7 @@ import { Outlet, useOutletContext } from "react-router";
 import Instagram from "@/assets/logo_instagram.png";
 import { PublicRoutes } from "@/routes/protected";
 import { User } from "@/types";
+import preloadImage from "@/libs/preloadImage";
 
 export function Component() {
   const { accessToken, setAccessToken } = useOutletContext() as {
@@ -9,6 +10,7 @@ export function Component() {
     setAccessToken: React.Dispatch<React.SetStateAction<string | null>>;
     user: User;
   };
+  preloadImage(Instagram);
   return (
     <PublicRoutes accessToken={accessToken}>
       <section className="container mx-auto grid grid-cols-12 items-center justify-center min-h-screen">
