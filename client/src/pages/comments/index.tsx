@@ -240,9 +240,12 @@ export function Component() {
             </figure>
           </div>
           <div className="col-span-12 lg:col-span-6 lg:relative h-auto overflow-auto">
-            <div className="py-4 px-4 w-[90%] mb-1 flex items-center justify-between border-b border-gray-300">
-              <div className="flex gap-2 items-center">
-                <div className=" avatar avatar-placeholder">
+            <div className="p-4 w-full mb-1 flex items-center justify-between border-b border-gray-300">
+              <Link
+                to={`/profile/${post?.user?.username}`}
+                className="flex gap-2 items-center"
+              >
+                <div className="avatar avatar-placeholder">
                   <div className="w-10 rounded-full border border-gray-300">
                     {post?.user?.profilePicture ? (
                       <img
@@ -257,20 +260,13 @@ export function Component() {
                     )}
                   </div>
                 </div>
-                <div>
-                  <Link
-                    to={`/profile/${post?.user?.username}`}
-                    className="text-sm font-semibold"
-                  >
-                    {post?.user?.username}
-                  </Link>
-                </div>
-              </div>
+                <p className="font-semibold">{post?.user?.username}</p>
+              </Link>
               {post?.userId === user?.id && (
                 <i
                   className="ri-more-line text-2xl cursor-pointer lg:mr-10"
                   role="button"
-                  title="more options"
+                  title="see options"
                   onClick={() => setIsOptionsOpen(true)}
                 ></i>
               )}
@@ -331,16 +327,19 @@ export function Component() {
                     )}
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-1 items-center">
-                  <Link
-                    to={`/profile/${post?.user?.username}`}
-                    className="text-sm font-semibold mb-0"
-                  >
-                    {post?.user?.username}
-                  </Link>
-                  <p className="text-sm mb-0">
-                    {post?.caption} - {post?.description}
-                  </p>
+                <div>
+                  <div>
+                    <Link
+                      to={`/profile/${post?.user?.username}`}
+                      className="text-sm font-semibold"
+                    >
+                      {post?.user?.username}
+                    </Link>
+                    <span className="text-sm mx-1 font-medium">
+                      {post?.caption}{" "}
+                      {post?.description ? `- ${post?.description}` : ""}
+                    </span>
+                  </div>
                   {post?.tags && (
                     <div className="flex flex-wrap items-center gap-2">
                       {post?.tags?.map((tag: string) => (
@@ -359,31 +358,35 @@ export function Component() {
               )}
               {post?.comments.map((comment: Comment) => (
                 <div key={comment.id} className="my-4">
-                  <div className="flex items-center gap-4">
-                    <div className="ml-1 avatar avatar-placeholder">
-                      <div className="w-8 rounded-full border border-gray-300">
-                        {comment?.user?.profilePicture ? (
-                          <img
-                            src={comment?.user?.profilePicture}
-                            alt={comment?.user?.username}
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="text-xl">
-                            {comment?.user?.username?.charAt(0)}
-                          </span>
-                        )}
+                  <div className="flex gap-4">
+                    <Link to={`/profile/${comment?.user?.username}`}>
+                      <div className="ml-1 avatar avatar-placeholder">
+                        <div className="w-9 rounded-full border border-gray-300">
+                          {comment?.user?.profilePicture ? (
+                            <img
+                              src={comment?.user?.profilePicture}
+                              alt={comment?.user?.username}
+                              loading="lazy"
+                            />
+                          ) : (
+                            <span className="text-xl">
+                              {comment?.user?.username?.charAt(0)}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                     <div className="flex-1">
-                      <div className="flex gap-2">
+                      <div>
                         <Link
                           to={`/profile/${comment?.user?.username}`}
                           className="text-sm font-semibold mb-0"
                         >
-                          {comment?.user?.username}
+                          {comment?.user?.username}{" "}
                         </Link>
-                        <p className="text-sm mb-0">{comment?.content}</p>
+                        <span className="text-sm mb-0 text-pretty font-medium">
+                          {comment?.content}
+                        </span>
                       </div>
                       <div className="flex gap-2 items-center">
                         <p className="text-xs text-gray-500">
@@ -537,7 +540,7 @@ export function Component() {
           type="button"
           onClick={handleClose}
         >
-          ✕
+          <i className="ri-close-line text-xl"></i>
         </button>
       </Modal>
     </>

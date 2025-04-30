@@ -55,8 +55,10 @@ export default function AuthProvider({
             window.location.reload();
           })
           .catch((error) => {
-            console.error(error);
-            handleLogout();
+            if (import.meta.env.VITE_APP_MODE === "development") {
+              console.error(error);
+            }
+            // handleLogout();
           });
       } else {
         const refreshTimer = setTimeout(async () => {
@@ -65,15 +67,19 @@ export default function AuthProvider({
             setAccessToken(data.accessToken);
             window.location.reload();
           } catch (error) {
-            console.error(error);
-            handleLogout();
+            if (import.meta.env.VITE_APP_MODE === "development") {
+              console.error(error);
+            }
+            // handleLogout();
           }
         }, timeUntilRefresh);
 
         return () => clearTimeout(refreshTimer);
       }
     } catch (error) {
-      console.error("Error setting up token refresh:", error);
+      if (import.meta.env.VITE_APP_MODE === "development") {
+        console.error("Error setting up token refresh:", error);
+      }
       handleLogout();
     }
   }, [accessToken, setAccessToken, handleLogout]);
