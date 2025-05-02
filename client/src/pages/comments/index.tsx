@@ -310,7 +310,7 @@ export function Component() {
                 </div>
               </Modal>
             </div>
-            <div className="mt-4 px-4 h-[500px] overflow-auto">
+            <div className="mt-4 px-4 h-[480px] overflow-auto">
               <div className="flex items-start gap-3">
                 <div className="avatar avatar-placeholder">
                   <div className="w-10 rounded-full border border-gray-300">
