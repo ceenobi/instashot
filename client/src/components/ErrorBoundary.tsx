@@ -1,3 +1,5 @@
+import { useAuth } from "@/context";
+import { useEffect } from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router";
 
 interface ErrorResponse {
@@ -17,6 +19,7 @@ interface RouteErrorResponse extends ErrorResponse {
 }
 
 export function ErrorBoundary() {
+  const { setupTokenRefresh } = useAuth();
   const error = useRouteError() as RouteErrorResponse;
   if (import.meta.env.VITE_APP_MODE === "development") {
     console.error(error);
@@ -28,6 +31,12 @@ export function ErrorBoundary() {
     error?.response?.data?.message ||
     error?.message ||
     "An unknown error occurred";
+
+  useEffect(() => {
+    if (errorMessage.includes("Unauthorized")) {
+      setupTokenRefresh();
+    }
+  }, [errorMessage, setupTokenRefresh]);
 
   if (isRouteErrorResponse(error)) {
     return (

@@ -58,7 +58,7 @@ export default function AuthProvider({
             if (import.meta.env.VITE_APP_MODE === "development") {
               console.error(error);
             }
-            // handleLogout();
+            handleLogout();
           });
       } else {
         const refreshTimer = setTimeout(async () => {
@@ -70,7 +70,7 @@ export default function AuthProvider({
             if (import.meta.env.VITE_APP_MODE === "development") {
               console.error(error);
             }
-            // handleLogout();
+            handleLogout();
           }
         }, timeUntilRefresh);
 
@@ -101,6 +101,7 @@ export default function AuthProvider({
         setIsOpenSidebar,
         user,
         setUser,
+        setupTokenRefresh 
       }}
     >
       {children}

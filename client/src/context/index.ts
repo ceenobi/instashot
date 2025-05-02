@@ -10,6 +10,7 @@ export const AuthContext = createContext<
       setIsOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
       user: User | null;
       setUser: React.Dispatch<React.SetStateAction<User | null>>;
+      setupTokenRefresh: () => void;
     }
   | undefined
 >(undefined);

@@ -5,7 +5,7 @@ import { Link, useOutletContext, useRouteLoaderData } from "react-router";
 export function Component() {
   const { data } = useRouteLoaderData("getUserProfile");
   const { user } = useOutletContext() as { user: User };
-  const { user: profileData } = data;
+  const { user: profileData } = data || {};
 
   const isAuthorized = user?.id === profileData?.id;
 

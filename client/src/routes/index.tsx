@@ -13,7 +13,7 @@ export function Component() {
   const routeData =
     (useRouteLoaderData("authUser") as {
       data: { user: User };
-    }) ?? {};
+    }) || {};
   //const navigation = useNavigation();
   //const isNavigating = Boolean(navigation.location);
 const user = routeData?.data?.user
