@@ -16,7 +16,7 @@ export function Component() {
     }) || {};
   //const navigation = useNavigation();
   //const isNavigating = Boolean(navigation.location);
-const user = routeData?.data?.user
+const user = routeData?.data?.user || {}
 
   return (
     <>
