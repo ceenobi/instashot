@@ -1,20 +1,3 @@
-// {
-//   "compilerOptions": {
-//     "baseUrl": "./src",
-//     "paths": {
-//       "@/*": ["./*"]
-//     }
-//   },
-//   "incremental": true,
-//   "include": ["src/**/*"],
-//   "exclude": ["node_modules", "**/*.spec.ts"],
-//   "files": [],
-//   "references": [
-//     { "path": "./tsconfig.app.json" },
-//     { "path": "./tsconfig.node.json" }
-//   ]
-// }
-
 {
   "compilerOptions": {
     "target": "ESNext",

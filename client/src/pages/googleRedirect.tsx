@@ -2,7 +2,7 @@ import { PrivateRoutes } from "@/routes/protected";
 import { User } from "@/types";
 import { useEffect } from "react";
 import { useOutletContext, useSearchParams } from "react-router";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 export function Component() {
   const { accessToken, setAccessToken, user } = useOutletContext() as {
@@ -16,9 +16,9 @@ export function Component() {
   useEffect(() => {
     if (googleAccessToken) {
       setAccessToken(googleAccessToken);
-      toast.success("Authentication successfull", {
-        id: "googleRedirect-success",
-      });
+      // toast.success("Authentication successfull", {
+      //   id: "googleRedirect-success",
+      // });
     }
     const redirect = setTimeout(() => {
       window.location.href = "/";
