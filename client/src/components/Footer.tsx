@@ -45,7 +45,7 @@ export default function Footer() {
                 <img
                   src={user?.profilePicture}
                   alt={user?.username}
-                  loading="lazy"
+                  referrerPolicy="no-referrer"
                 />
               ) : (
                 <span className="text-md">{user?.username?.charAt(0)}</span>

@@ -69,6 +69,7 @@ export default function ProfileImage({ profileData }: { profileData: User }) {
                 src={profileData?.profilePicture}
                 alt={profileData?.username}
                 title="change profile photo"
+                referrerPolicy="no-referrer"
               />
             ) : (
               <span className="text-7xl" title="change profile photo">

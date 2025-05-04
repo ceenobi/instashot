@@ -29,9 +29,9 @@ export function Component() {
   const busy = fetcher.state !== "idle";
 
   useEffect(() => {
-    const handleLoginSuccess = (accessToken: string, message: string) => {
+    const handleLoginSuccess = (accessToken: string) => {
       setAccessToken(accessToken);
-      toast.success(message, { id: "login-success" });
+      //toast.success(message, { id: "login-success" });
       window.location.href ="/"
     };
     const handleLoginError = (message: string) => {
@@ -39,7 +39,7 @@ export function Component() {
     };
     // Handle form submission success
     if (fetcher.data && fetcher.data?.success) {
-      handleLoginSuccess(fetcher.data.accessToken, fetcher.data.message);
+      handleLoginSuccess(fetcher.data.accessToken);
     } else if (fetcher.data && fetcher.data?.message) {
       handleLoginError(fetcher.data.message);
     }

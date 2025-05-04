@@ -83,7 +83,7 @@ export function Component() {
     const message = data.message || data.error;
     if (data?.success) {
       toast.success(message, { id: "follow-user" });
-    } 
+    }
     // else if (!data?.success) {
     //   toast.error(message, { id: "follow-userError" });
     // }
@@ -207,7 +207,7 @@ export function Component() {
                       <img
                         src={user?.profilePicture}
                         alt={user?.username}
-                        loading="lazy"
+                        referrerPolicy="no-referrer"
                       />
                     ) : (
                       <span className="text-3xl">

@@ -140,6 +140,7 @@ function Card({
                       src={post?.user?.profilePicture}
                       alt={post?.user?.username}
                       loading="lazy"
+                      referrerPolicy="no-referrer"
                     />
                   ) : (
                     <span className="text-3xl">
