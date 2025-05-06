@@ -101,7 +101,7 @@ export function Component() {
                   <button
                     className="btn btn-primary focus:outline-none w-[120px]"
                     title={
-                      profileData?.following?.includes(user?.id)
+                      profileData?.followers?.includes(user?.id)
                         ? "Unfollow"
                         : "Follow"
                     }
