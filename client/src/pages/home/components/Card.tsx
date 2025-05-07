@@ -182,7 +182,7 @@ function Card({
                             src: item,
                             width: 400,
                             height: 550,
-                            className: `w-full h-auto lg:h-[550px] object-cover aspect-square shrink-0 md:rounded-md`,
+                            className: `w-full h-full lg:h-[550px] object-cover aspect-square shrink-0 md:rounded-md`,
                           }}
                           ref={videoRef}
                         />

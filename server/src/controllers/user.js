@@ -533,11 +533,11 @@ export const updateProfile = tryCatchFn(async (req, res, next) => {
   const updatedUser = await prisma.user.update({
     where: { id: req.user.id },
     data: {
-      fullname,
-      bio,
-      isPublic,
-      email,
-      username,
+      fullname: fullname || user.fullname,
+      bio: bio || user.bio,
+      isPublic: isPublic || user.isPublic,
+      email: email || user.email,
+      username: username || user.username,
     },
   });
   res.status(200).json({
